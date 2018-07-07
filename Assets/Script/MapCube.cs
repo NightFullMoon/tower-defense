@@ -9,6 +9,8 @@ public class MapCube : MonoBehaviour
     public GameObject turretGo;
     //保存当前Cube身上的炮台
 
+    public GameObject buildEffect;
+
     // Use this for initialization
     void Start()
     {
@@ -24,5 +26,8 @@ public class MapCube : MonoBehaviour
     public void BuildTurret(GameObject turret)
     {
         turretGo = GameObject.Instantiate(turret, transform.position, Quaternion.identity);
+        GameObject effect = GameObject.Instantiate(buildEffect, transform.position, Quaternion.identity);
+        Destroy(effect, 1);
+
     }
 }

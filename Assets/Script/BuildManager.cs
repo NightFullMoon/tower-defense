@@ -88,6 +88,10 @@ public class BuildManager : MonoBehaviour
             }
 
 
+            if (null == selectedTurretData) {
+                return;
+            }
+
             if (money < selectedTurretData.cost)
             {
                 //给出钱不够的提示
