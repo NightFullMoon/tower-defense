@@ -300,8 +300,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\enemy.cs" />
+    <Compile Include="Assets\Script\enemy.cs" />
+    <Compile Include="Assets\Script\enemySpawner.cs" />
     <Compile Include="Assets\Script\viewController.cs" />
+    <Compile Include="Assets\Script\Wave.cs" />
     <Compile Include="Assets\Script\Waypoints.cs" />
   </ItemGroup>
   <ItemGroup>

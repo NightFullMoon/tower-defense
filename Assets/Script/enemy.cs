@@ -26,6 +26,7 @@ public class enemy : MonoBehaviour
     {
         if (positions.Length <= index)
         {
+            ReachDestination();
             return;
         }
 
@@ -35,5 +36,16 @@ public class enemy : MonoBehaviour
         {
             ++index;
         }
+
+        //if(index) 
+    }
+
+    void ReachDestination() {
+        GameObject.Destroy(this.gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        enemySpawner.EnemyAliveCont--;
     }
 }
