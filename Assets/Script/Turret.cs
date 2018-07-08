@@ -31,6 +31,7 @@ public class Turret : MonoBehaviour
         //Debug.Log(timer);
         if (enemys.Count < 1)
         {
+            OnNoEnemy();
             return;
         }
 
@@ -40,13 +41,18 @@ public class Turret : MonoBehaviour
             targetPosition.y = head.position.y;
             head.LookAt(targetPosition);
         }
+        else
+        {
+            OnNoEnemy();
+            return;
+        }
 
         if (attactRateTime < timer)
         {
             //Debug.Log("Attactk");
 
 
-            
+
             Attactk();
             //timer -= attactRateTime;
 
@@ -66,15 +72,23 @@ public class Turret : MonoBehaviour
 
         if (enemys.Count < 1)
         {
+            OnNoEnemy();
             return;
         }
 
-        timer = 0;
 
-        GameObject bullet = GameObject.Instantiate(bulletPrefab, firePosition.position, firePosition.rotation);
-        bullet.GetComponent<bullet>().SetTarget(enemys[0].transform);
-
+        OnAttactk(enemys[0]);
     }
+
+    protected virtual void OnAttactk(GameObject enemy)
+    {
+        timer = 0;
+        GameObject bullet = GameObject.Instantiate(bulletPrefab, firePosition.position, firePosition.rotation);
+        bullet.GetComponent<bullet>().SetTarget(enemy.transform);
+    }
+
+    //每次Update，没有敌人时候的操作
+    protected virtual void OnNoEnemy() { }
 
     private void OnTriggerEnter(Collider other)
     {
