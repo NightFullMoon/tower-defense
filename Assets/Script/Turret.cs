@@ -16,6 +16,8 @@ public class Turret : MonoBehaviour
 
     public Transform firePosition;
 
+    public Transform head;
+
     // Use this for initialization
     void Start()
     {
@@ -29,16 +31,22 @@ public class Turret : MonoBehaviour
         //Debug.Log(timer);
         if (enemys.Count < 1)
         {
-            //Debug.Log("<1");
-            //print("<1");
             return;
         }
 
-
+        if (null != enemys[0])
+        {
+            Vector3 targetPosition = enemys[0].transform.position;
+            targetPosition.y = head.position.y;
+            head.LookAt(targetPosition);
+        }
 
         if (attactRateTime < timer)
         {
             //Debug.Log("Attactk");
+
+
+            
             Attactk();
             //timer -= attactRateTime;
 

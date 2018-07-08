@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.UI;
+
 public class enemy : MonoBehaviour
 {
 
@@ -9,11 +11,17 @@ public class enemy : MonoBehaviour
     private Transform[] positions;
     private int index = 0;
 
+    public int MaxHP = 150;
+    private int hp = 150;
+    public GameObject explosionEffect;
+
+    public Slider HPSlider;
+
     // Use this for initialization
     void Start()
     {
         positions = Waypoints.positions;
-
+        hp = MaxHP;
     }
 
     // Update is called once per frame
@@ -50,6 +58,27 @@ public class enemy : MonoBehaviour
     }
 
     public void TakeDamage(int damage) {
+        if (hp <= 0) {
+            return;
+        }
+
+        hp -= damage;
+
+        HPSlider.value = (float)hp / MaxHP;
+        if (hp <= 0) {
+            Die();
+        }
+    }
+
+    void Die() {
+      
+        if (explosionEffect) {
+            //Debug.Log("播放销毁动画");
+            GameObject effect =  GameObject.Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            Destroy(effect, 1.5f);
+        }
+
+        Destroy(gameObject);
 
     }
 }

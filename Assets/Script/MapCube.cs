@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.EventSystems;
+
 public class MapCube : MonoBehaviour
 {
 
@@ -29,5 +31,19 @@ public class MapCube : MonoBehaviour
         GameObject effect = GameObject.Instantiate(buildEffect, transform.position, Quaternion.identity);
         Destroy(effect, 1);
 
+    }
+
+    private void OnMouseEnter()
+    {
+        if (null != turretGo || EventSystem.current.IsPointerOverGameObject()) {
+            return;
+        }
+
+        GetComponent<Renderer>().material.color = Color.red;
+    }
+
+    private void OnMouseExit()
+    {
+        GetComponent<Renderer>().material.color = Color.white;
     }
 }
