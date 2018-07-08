@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-
+    [HideInInspector]
     public List<GameObject> enemys = new List<GameObject>();
 
     //多少秒攻击一次

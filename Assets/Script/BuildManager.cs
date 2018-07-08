@@ -25,7 +25,10 @@ public class BuildManager : MonoBehaviour
     public Button UpgradeBtn;
 
 
-    private GameObject selectedTurretGo;
+    //private GameObject selectedTurretGo;
+
+    //用来保存最后选中的MapCube
+    private MapCube selectedMapCube;
     //private bool isBuildMenuDisplay = false;
 
     private Animator UIAnimator;
@@ -101,7 +104,7 @@ public class BuildManager : MonoBehaviour
             {
 
 
-                if (selectedTurretGo == mapCube.turretGo)
+                if (selectedMapCube == mapCube)
                 {
                     if (UpgradeCanvas.activeInHierarchy)
                     {
@@ -120,7 +123,7 @@ public class BuildManager : MonoBehaviour
                     ShowUpgradeUI(mapCube.transform.position, mapCube.isUpgraded);
                 }
 
-                selectedTurretGo = mapCube.turretGo;
+                selectedMapCube = mapCube;
                 return;
             }
 
@@ -139,7 +142,7 @@ public class BuildManager : MonoBehaviour
 
             // 创建新的
             ChangeMoney(-selectedTurretData.cost);
-            mapCube.BuildTurret(selectedTurretData.TurretPrefab);
+            mapCube.BuildTurret(selectedTurretData);
 
             //mapCube.GetComponent<MeshRenderer>().material.color = new Color(255, 0, 0);
 
@@ -169,11 +172,15 @@ public class BuildManager : MonoBehaviour
     //点击升级按钮的时候
     public void OnClickUpgradeBtn()
     {
-
+        //if()
+        selectedMapCube.Upgrade();
+        StartCoroutine(hideUpgradeUI());
     }
 
     //点击销毁按钮的时候
     public void OnClickDestoryBtn()
     {
+        selectedMapCube.DestoryTurret();
+        StartCoroutine(hideUpgradeUI());
     }
 }

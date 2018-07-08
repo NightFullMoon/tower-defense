@@ -16,6 +16,9 @@ public class MapCube : MonoBehaviour
     [HideInInspector]
     public bool isUpgraded = false;
 
+    //已经建造在Cube上的炮塔的信息
+    private TurretData BuildedTurretData;
+
     // Use this for initialization
     void Start()
     {
@@ -28,12 +31,13 @@ public class MapCube : MonoBehaviour
 
     }
 
-    public void BuildTurret(GameObject turret)
+    public void BuildTurret(TurretData turretData)
     {
         isUpgraded = false;
-        turretGo = GameObject.Instantiate(turret, transform.position, Quaternion.identity);
+        BuildedTurretData = turretData;
+        turretGo = GameObject.Instantiate(turretData.TurretPrefab, transform.position, Quaternion.identity);
         GameObject effect = GameObject.Instantiate(buildEffect, transform.position, Quaternion.identity);
-        Destroy(effect, 1);
+        Destroy(effect, 1.5f);
 
     }
 
@@ -50,5 +54,24 @@ public class MapCube : MonoBehaviour
     private void OnMouseExit()
     {
         GetComponent<Renderer>().material.color = Color.white;
+    }
+
+    public void Upgrade() {
+        if (isUpgraded) {
+            return;
+        }
+
+        Destroy(turretGo);
+        isUpgraded = true;
+        turretGo = GameObject.Instantiate(BuildedTurretData.TurretUpgradedPrefab, transform.position, Quaternion.identity);
+        GameObject effect = GameObject.Instantiate(buildEffect, transform.position, Quaternion.identity);
+        Destroy(effect, 1.5f);
+    }
+
+    public void DestoryTurret() {
+        Destroy(turretGo);
+        isUpgraded = false;
+        turretGo = null;
+        BuildedTurretData = null;
     }
 }
