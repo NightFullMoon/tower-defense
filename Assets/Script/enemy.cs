@@ -48,4 +48,8 @@ public class enemy : MonoBehaviour
     {
         enemySpawner.EnemyAliveCont--;
     }
+
+    public void TakeDamage(int damage) {
+
+    }
 }

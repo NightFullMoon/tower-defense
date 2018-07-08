@@ -9,46 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1675731898443348}
+  m_RootGameObject: {fileID: 1937901023571140}
   m_IsPrefabParent: 1
---- !u!1 &1675731898443348
+--- !u!1 &1937901023571140
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4853663625956456}
-  - component: {fileID: 33828672237034526}
-  - component: {fileID: 23415466122815114}
-  - component: {fileID: 135581178065401632}
-  - component: {fileID: 114587854827741014}
-  m_Layer: 10
-  m_Name: Enemy4
-  m_TagString: Enemy
+  - component: {fileID: 4521993245310174}
+  - component: {fileID: 33304556504903890}
+  - component: {fileID: 23088785796241142}
+  - component: {fileID: 135431738633726094}
+  - component: {fileID: 114286817913174026}
+  - component: {fileID: 54896127100375674}
+  m_Layer: 11
+  m_Name: bullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4853663625956456
+--- !u!4 &4521993245310174
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1675731898443348}
+  m_GameObject: {fileID: 1937901023571140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20, y: 2, z: 25}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: -3.057, y: 1.42, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23415466122815114
+--- !u!23 &23088785796241142
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1675731898443348}
+  m_GameObject: {fileID: 1937901023571140}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -58,7 +59,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: d42a6485a9249f145a707d8931efefb1, type: 2}
+  - {fileID: 2100000, guid: a8ffd7bb5105d0742893854dfc542df7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,33 +79,51 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33828672237034526
+--- !u!33 &33304556504903890
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1675731898443348}
+  m_GameObject: {fileID: 1937901023571140}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114587854827741014
+--- !u!54 &54896127100375674
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1937901023571140}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &114286817913174026
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1675731898443348}
+  m_GameObject: {fileID: 1937901023571140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe2be93b56d5e1e4bbbf63026565b5dc, type: 3}
+  m_Script: {fileID: 11500000, guid: ec01b2c8c8003f54dadb47c572e8e9f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 25
---- !u!135 &135581178065401632
+  damage: 50
+  speed: 20
+  explosionEffectPrefab: {fileID: 1938706633884684, guid: ff0ce40544590ee489cebdd9196764f8,
+    type: 2}
+--- !u!135 &135431738633726094
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1675731898443348}
+  m_GameObject: {fileID: 1937901023571140}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

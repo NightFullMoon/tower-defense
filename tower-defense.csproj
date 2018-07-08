@@ -301,9 +301,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\BuildManager.cs" />
+    <Compile Include="Assets\Script\bullet.cs" />
     <Compile Include="Assets\Script\enemy.cs" />
     <Compile Include="Assets\Script\enemySpawner.cs" />
     <Compile Include="Assets\Script\MapCube.cs" />
+    <Compile Include="Assets\Script\Turret.cs" />
     <Compile Include="Assets\Script\TurretData.cs" />
     <Compile Include="Assets\Script\viewController.cs" />
     <Compile Include="Assets\Script\Wave.cs" />
