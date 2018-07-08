@@ -20,7 +20,23 @@ public class BuildManager : MonoBehaviour
     private int money = 1000;
     public Animator moneyAnimator;
 
-    void ChangeMoney(int change = 0) {
+    public GameObject UpgradeCanvas;
+
+    public Button UpgradeBtn;
+
+
+    private GameObject selectedTurretGo;
+    //private bool isBuildMenuDisplay = false;
+
+    private Animator UIAnimator;
+
+    private void Start()
+    {
+        UIAnimator = UpgradeCanvas.GetComponent<Animator>();
+    }
+
+    void ChangeMoney(int change = 0)
+    {
         money += change;
         moneyText.text = "$" + money;
     }
@@ -83,12 +99,34 @@ public class BuildManager : MonoBehaviour
 
             if (null != mapCube.turretGo)
             {
-                // TODO:升级处理
+
+
+                if (selectedTurretGo == mapCube.turretGo)
+                {
+                    if (UpgradeCanvas.activeInHierarchy)
+                    {
+                        //hideUpgradeUI();
+                        StartCoroutine(hideUpgradeUI());
+                    }
+                    else
+                    {
+                        // 显示升级菜单
+                        ShowUpgradeUI(mapCube.transform.position, mapCube.isUpgraded);
+
+                    }
+                }
+                else
+                {
+                    ShowUpgradeUI(mapCube.transform.position, mapCube.isUpgraded);
+                }
+
+                selectedTurretGo = mapCube.turretGo;
                 return;
             }
 
 
-            if (null == selectedTurretData) {
+            if (null == selectedTurretData)
+            {
                 return;
             }
 
@@ -102,10 +140,40 @@ public class BuildManager : MonoBehaviour
             // 创建新的
             ChangeMoney(-selectedTurretData.cost);
             mapCube.BuildTurret(selectedTurretData.TurretPrefab);
-            
 
             //mapCube.GetComponent<MeshRenderer>().material.color = new Color(255, 0, 0);
 
         }
+    }
+
+    void ShowUpgradeUI(Vector3 pos, bool isDisabledUpgrade = false)
+    {
+        StopCoroutine("hideUpgradeUI");
+
+
+        UpgradeCanvas.transform.position = pos;
+        UpgradeCanvas.SetActive(false);
+        UpgradeCanvas.SetActive(true);
+        UpgradeBtn.interactable = !isDisabledUpgrade;
+        //isBuildMenuDisplay = true;
+
+    }
+    IEnumerator hideUpgradeUI()
+    {
+        UIAnimator.SetTrigger("hide");
+        yield return new WaitForSeconds(0.8f);
+        UpgradeCanvas.SetActive(false);
+        //isBuildMenuDisplay = false;
+    }
+
+    //点击升级按钮的时候
+    public void OnClickUpgradeBtn()
+    {
+
+    }
+
+    //点击销毁按钮的时候
+    public void OnClickDestoryBtn()
+    {
     }
 }

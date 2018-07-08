@@ -13,6 +13,9 @@ public class MapCube : MonoBehaviour
 
     public GameObject buildEffect;
 
+    [HideInInspector]
+    public bool isUpgraded = false;
+
     // Use this for initialization
     void Start()
     {
@@ -27,6 +30,7 @@ public class MapCube : MonoBehaviour
 
     public void BuildTurret(GameObject turret)
     {
+        isUpgraded = false;
         turretGo = GameObject.Instantiate(turret, transform.position, Quaternion.identity);
         GameObject effect = GameObject.Instantiate(buildEffect, transform.position, Quaternion.identity);
         Destroy(effect, 1);
@@ -35,7 +39,8 @@ public class MapCube : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (null != turretGo || EventSystem.current.IsPointerOverGameObject()) {
+        if (null != turretGo || EventSystem.current.IsPointerOverGameObject())
+        {
             return;
         }
 
