@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    [HideInInspector]
+   // [HideInInspector]
     public List<GameObject> enemys = new List<GameObject>();
 
     //多少秒攻击一次
@@ -43,6 +43,13 @@ public class Turret : MonoBehaviour
         }
         else
         {
+            UpdateEnemys();
+            // OnNoEnemy();
+            return;
+        }
+
+        if (enemys.Count < 1)
+        {
             OnNoEnemy();
             return;
         }
@@ -65,18 +72,6 @@ public class Turret : MonoBehaviour
     }
     void Attactk()
     {
-        if (null == enemys[0])
-        {
-            UpdateEnemys();
-        }
-
-        if (enemys.Count < 1)
-        {
-            OnNoEnemy();
-            return;
-        }
-
-
         OnAttactk(enemys[0]);
     }
 

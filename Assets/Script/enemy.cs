@@ -11,8 +11,8 @@ public class enemy : MonoBehaviour
     private Transform[] positions;
     private int index = 0;
 
-    public int MaxHP = 150;
-    private int hp = 150;
+    public float MaxHP = 150;
+    private float hp = 150;
     public GameObject explosionEffect;
 
     public Slider HPSlider;
@@ -57,7 +57,7 @@ public class enemy : MonoBehaviour
         enemySpawner.EnemyAliveCont--;
     }
 
-    public void TakeDamage(int damage) {
+    public void TakeDamage(float damage) {
         if (hp <= 0) {
             return;
         }
