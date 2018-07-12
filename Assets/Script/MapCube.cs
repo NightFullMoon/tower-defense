@@ -17,7 +17,7 @@ public class MapCube : MonoBehaviour
     public bool isUpgraded = false;
 
     //已经建造在Cube上的炮塔的信息
-    private TurretData BuildedTurretData;
+    public TurretData BuildedTurretData;
 
     // Use this for initialization
     void Start()

@@ -304,6 +304,7 @@
     <Compile Include="Assets\Script\bullet.cs" />
     <Compile Include="Assets\Script\enemy.cs" />
     <Compile Include="Assets\Script\enemySpawner.cs" />
+    <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\LaserTurret.cs" />
     <Compile Include="Assets\Script\MapCube.cs" />
     <Compile Include="Assets\Script\Turret.cs" />

@@ -48,8 +48,11 @@ public class enemy : MonoBehaviour
         //if(index) 
     }
 
+    //到达终点
     void ReachDestination() {
         GameObject.Destroy(this.gameObject);
+        GameManager.Instance.Failded();
+        Debug.Log("到达终点");
     }
 
     private void OnDestroy()

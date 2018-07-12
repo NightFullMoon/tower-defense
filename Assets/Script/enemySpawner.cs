@@ -12,12 +12,17 @@ public class enemySpawner : MonoBehaviour
 
     public float waveRate = 3;
 
+    private Coroutine coroutine;
+
 
     void Start()
     {
-        StartCoroutine(SpawnEnemy());
+        coroutine =  StartCoroutine(SpawnEnemy());
     }
 
+    public void stop() {
+        StopCoroutine(coroutine);
+    }
 
     IEnumerator SpawnEnemy()
     {
