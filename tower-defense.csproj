@@ -300,6 +300,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GameMenu.cs" />
     <Compile Include="Assets\Script\BuildManager.cs" />
     <Compile Include="Assets\Script\bullet.cs" />
     <Compile Include="Assets\Script\enemy.cs" />
